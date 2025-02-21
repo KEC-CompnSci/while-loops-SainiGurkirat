@@ -7,10 +7,10 @@ public class Assignment {
     public static final Scanner scanner = new Scanner(System.in);
     
     public static void main(String[] args) {
-      String repeated = repeatWord("hello", 3);
+      String repeated = repeatWord("", 0);
       System.out.println(repeated);
-      String pyramid = createPyramid(0);
-      String FizzBuzz = countTo(3);
+      String pyramid = createPyramid(5);
+      String FizzBuzz = countTo(50);
       
     }
     
@@ -27,11 +27,12 @@ public class Assignment {
         // No trailing space at the end
 
         String repeatedWords = word; 
-        
+        if(times == 0){
+            return "";
+        }
         while(times > 1){
-            repeatedWords = repeatedWords + " ";
+            repeatedWords = repeatedWords + " " + word;
             times--;
-            System.out.print(repeatedWords);
         }
 
         return repeatedWords;
@@ -53,7 +54,19 @@ public class Assignment {
         // - Outer loop for each row
         // - Inner loop to repeat the number
         // Use \n for newlines
-        return "";
+        
+        String pyramidString = "";
+        for(int i = 1; i <= maxNumber; i++){
+        // inner lines
+            for(int line = 1; line <= i; line++){
+            // continues to add number to string till condition is met
+                pyramidString = pyramidString + i;
+            }
+        // next line of the pyramid
+            pyramidString += "\n";
+        }
+
+        return pyramidString;
     }
     
  
@@ -73,8 +86,21 @@ public class Assignment {
         // Use string concatenation
         // Numbers/words should be separated by spaces
         // No trailing space at the end
-        return "";
+
+        String count = "1";
+
+        for(int i = 2; i <= maxNumber; i++){  
+            if(i % 15 == 0){
+                count += " FizzBuzz";
+            }else if (i % 3 == 0){
+                count += " Fizz";
+            }else if (i % 5 == 0) {
+                count += " Buzz";
+            }else count += " " + i;
+            
+        }
+        
+
+        return count;
     }
-    
-  
 }
